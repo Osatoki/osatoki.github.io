@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<title>Osatokis Seite: Aktuell</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, max-image-preview:none, notranslate" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>">
+    <style>
+	h1 {text-shadow: 0 0 0px #000000, 0 0 15px rgba(0,0,0,0.6);}
+</style>
+<script>
+
+/**
+ * Decimal adjustment of a number.
+ *
+ * @param {String}  type  The type of adjustment.
+ * @param {Number}  value The number.
+ * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+ * @returns {Number} The adjusted value.
+ *https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+ */
+function decimalAdjust(type, value, exp) {
+  // If the exp is undefined or zero...
+  if (typeof exp === 'undefined' || +exp === 0) {
+    return Math[type](value);
+  }
+  value = +value;
+  exp = +exp;
+  // If the value is not a number or the exp is not an integer...
+  if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+    return NaN;
+  }
+  // Shift
+  value = value.toString().split('e');
+  value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+  // Shift back
+  value = value.toString().split('e');
+  return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+}
+
+// Decimal round
+const round10 = (value, exp) => decimalAdjust('round', value, exp);
+// Decimal floor
+const floor10 = (value, exp) => decimalAdjust('floor', value, exp);
+// Decimal ceil
+const ceil10 = (value, exp) => decimalAdjust('ceil', value, exp);
+
+var x =setInterval(function countup(){
+	var countDownDate = new Date("Jun 19, 2022 01:15:00").getTime();
+	var tage=10;
+	var calc = tage*24*60*60*1000;
+	var now = new Date().getTime();
+	var distance = now-countDownDate;
+	var distanceRound = floor10(100/calc*distance, -5);
+
+	document.getElementById("show").innerHTML = "zu <b>"+distanceRound+" %</b> aufgeladen.";
+	document.getElementById("meter").value = distanceRound;
+	console.log("ok");
+	  if (distanceRound > 100) {
+    clearInterval(x);
+    document.getElementById("show").innerHTML = "zu <b>100 %</b> aufgeladen.";
+  }
+  
+}, 1000);
+   </script>
+</head>
+<script src="assets/js/oscarmorrison-md-page.js"></script><noscript>
+<!--<script src="https://rawcdn.githack.com/oscarmorrison/md-page/master/md-page.js"></script>-->
+# Aktuell
+
+1. [Start](./index.html) 
+2. [Blog](./blog.html)
+3. [Gute Nachrichten](./gutenachrichten.html)
+4. [Kontakt](./kontakt.html)
+5. [Links](./links.html)
+6. [Literatur](./literatur.html)
+7. [Musik](./musik.html)
+
+---
+
+Aktuell lese und höre ich folgende Dinge:
+
+[Der Prophet (Hörbuch)](https://www.vorleser.net/gibran_prophet/hoerbuch.html)
+<meter value="10" min="0" max="28"></meter> 10/28
+
+Das geheime Leben der Bäume
+(E-Book; habe die Schriftgröße geändert. Hat eigentlich 224 Seiten)
+<meter value="44" min="0" max="391"></meter> 44/391 
+<!--20.03. pringl-->
+<!--(100 Tage am 14.06)-->
+[Kinmunity Library Backup](https://forums.therian-guide.com/hosted/kinmunity%20library%20backup.pdf)
+<meter value="15" min="0" max="69"></meter> 15/69
+
+---
+
+<meter value="3" min="0" max="100" id="meter"></meter> <span id="show"></span>
+
+   
+   
+
+
+<!--
+---
+<details>  <summary>Vorgemerkt</summary>
+
+[Scribner's Otherkin Timeline — The Recent History of Elfin, Fae, and Animal People](http://frameacloud.com/wp-content/uploads/2015/01/Scribner_Timeline2p0.pdf)
+<meter value="0" min="0" max="109"></meter> 0/109
+
+Handbuch der Natur- und Elementarmagie, Scott Cunningham, Teil 1
+<meter value="0" min="0" max="175"></meter> 0/175
+
+Handbuch der Natur- und Elementarmagie, Scott Cunningham, Teil 2
+<meter value="0" min="0" max="203"></meter> 0/203
+
+Fox Watching: In the shadow of the fox, Martin Hemmington
+<meter value="0" min="0" max="96"></meter> 0/96
+
+Town Fox, Country Fox, Brian Vesey-Fitzgerald
+<meter value="0" min="0" max="158"></meter> 0/158
+
+Running with the Fox, David Macdonald
+<meter value="0" min="0" max="158"></meter> 0/158
+
+  </details> 
+  -->
+<!--<details>  <summary></summary>  </details>  -->
+
+---
+
+Aktueller Stand der Datei: 2022-JUN-19
